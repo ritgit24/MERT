@@ -45,7 +45,7 @@ def chunk_local_saraga(raw_data_dir, output_chunks_dir, chunk_length_ms=30000):
             
     print(f"\nAll done! Processed clips are safely stored in: {output_chunks_dir}")
 
-# Point this to your existing directory inside MERT/saraga_raw_data
+
 RAW_DATA_PATH = "./saraga_raw_data"
 PROCESSED_CHUNKS_PATH = "./saraga_data/processed_chunks"
 

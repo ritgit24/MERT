@@ -2,6 +2,5 @@ check_dim.py
 saraga_data/*
 saraga_raw_data/*
 
-# But keep the manifests folder
 !saraga_data/manifests/
 !saraga_raw_data/manifests/

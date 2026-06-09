@@ -116,7 +116,7 @@ class MERTClassifier(nn.Module):
 
 
 def run_pipeline(model_name, run_label):
-    print(f"\n=================== STARTING RUN: {run_label} ===================")
+    print(f"\n STARTING RUN: {run_label} ")
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"Active Processing Hardware Target: {device.upper()}")
@@ -280,6 +280,3 @@ def run_pipeline(model_name, run_label):
 
 if __name__ == "__main__":
     run_pipeline("m-a-p/MERT-v1-95M", "base_mert")
-
-    # Later, for your cultural model:
-    # run_pipeline("./path/to/your/cultural_mert_folder", "cultural_mert")

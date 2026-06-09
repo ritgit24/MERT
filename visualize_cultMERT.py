@@ -81,9 +81,3 @@ if __name__ == "__main__":
         "./cultural_mert_developed_embeddings.npy",
         "Cultural MERT Embedding Space"
     )
-
-    # Uncomment after cultural model run
-    # plot_latent_space(
-    #     "./cultural_mert_developed_embeddings.npy",
-    #     "Cultural MERT Embedding Space"
-    # )
