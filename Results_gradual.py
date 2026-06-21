@@ -17,21 +17,20 @@ The model achieved an outstanding performance leap after fixing optimization bot
 
 ## The exploding gradient problem 
 
-During the initial training runs, the model crashed at the start of **Epoch 3**—the exact moment the first pre-trained layers of the MERT model were unfrozen. The loss values immediately turned into **`nan` (Not a Number)**.
+During the initial training runs, the model crashed at the start of **Epoch 3** - the exact moment the first pre-trained layers of the MERT model were unfrozen. The loss values immediately turned into **`nan` (Not a Number)**.
 
 1. **Optimizer Memory Wipe**: In early code iterations, every time the model hit an unfreezing milestone, the code threw away the old optimizer and created a new one from scratch. This completely erased the optimizer's active momentum memory. The model essentially "forgot" how to learn every two epochs.
-2. **Batch Size Noise**: Due to Laptop GPU VRAM limits (6GB), we were forced to train with a tiny batch size (`BATCH_SIZE = 2`). The network was using `Batch Normalization`, which calculates math averages across a batch. With only 2 samples, the math averages were wildly inaccurate and unstable, causing deep structural noise.
 3. **Floating Point Overflow**: The MERT model was loaded in 16-bit float precision (`FP16`). The massive feedback spike from the broken optimization path pushed the numbers past what `FP16` can handle, rolling them over into infinity (`nan`).
 
 To solve this : 
 
 *   **Switched to Layer Normalization**: Replaced `BatchNorm1d` with `LayerNorm`. Layer Normalization calculates math internally per audio file instead of across batches, making it immune to tiny batch sizes.
 *   **Preserved Optimizer Momentum**: Rewrote the scheduler to use `optimizer.add_param_group()`. Instead of destroying the optimizer, it gently appends newly unfrozen layers while keeping the momentum of the rest of the model intact.
-*   **Gradient Clipping & Lower Learning Rates**: We clamped the maximum size of gradient steps to `1.0` and dropped the backbone learning rate down to an ultra-safe speed (`1e-6`) to protect pre-trained weights.
+*   **Gradient Clipping & Lower Learning Rates**: Clamped the maximum size of gradient steps to `1.0` and dropped the backbone learning rate down to an ultra-safe speed (`1e-6`) to protect pre-trained weights.
 
 ---
 
-*Epoch wise Progress : *
+*Epoch wise Progress :*
 
 | Epoch | Backbone Status | Train Loss | Valid Loss | Valid Acc |
 | :---: | :--- | :---: | :---: | :---: |
