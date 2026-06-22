@@ -37,6 +37,6 @@ The drop in total test samples from 460 to 446 was accompanied by a massive expa
   $$\text{Random Guessing Chance Baseline} = \frac{1}{80} = 1.25\%$$
 
 ###  Key Mathematical Conclusion
-Holding a stable **75.11% Overall Accuracy** while the evaluation matrix scales from 25 to 80 target outputs is a massive machine learning success. If the PANN purification hadn't optimized the feature spaces, adding 55 new raga classes would have caused the model's accuracy to completely collapse. 
+The evaluation matrix scaled from 25 to 80 target outputs. If the PANN purification hadn't optimized the feature spaces, adding 55 new raga classes would have caused the model's accuracy to completely collapse. 
 
 Furthermore, the **Top-5 Accuracy Matrix scaled up from 93.26% to 94.62%**, confirming that the cleaner data allowed the transformer to organize related raga structures with exceptionally high reliability.
