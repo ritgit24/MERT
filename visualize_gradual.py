@@ -86,8 +86,9 @@ def plot_latent_space(npy_path, title):
 
 
 if __name__ == "__main__":
-    # Configured to look for the exact .npy array written by your gradual training loop run
+    # Updated title so it automatically writes to a brand new, unique PNG filename
     plot_latent_space(
         "./cultural_mert_gradual_developed_embeddings.npy",
-        "Cultural MERT Gradual Unfreezing Embedding Space"
+        "Cultural MERT PANNS Gradual Unfreezing Embedding Space"
     )
+
