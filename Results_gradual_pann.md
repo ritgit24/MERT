@@ -1,6 +1,6 @@
 # Comprehensive Performance Report: Gradual Unfreezing with PANN Data Purification
 
-This report details the architectural changes, epoch-wise convergence tracking, and data distribution shifts when integrating **PANN (Pretrained Audio Neural Networks)** into the **CultureMERT** gradual unfreezing classification pipeline.
+This file shows the architectural changes, epoch-wise convergence tracking, and data distribution shifts when integrating **PANN (Pretrained Audio Neural Networks)** into the **CultureMERT** gradual unfreezing classification pipeline.
 
 ---
 
